@@ -134,16 +134,13 @@
       transform: translateY(-2px);
     }
 
-    /* 主视觉 */
-    .hero {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      align-items: center;
-      gap: 40px;
-      padding: 48px 0 36px;
+    /* ===== 主视觉（精简版，只保留标题和简介） ===== */
+    .hero-header {
+      padding: 48px 0 20px;
+      text-align: center;
     }
 
-    .hero-left h1 {
+    .hero-header h1 {
       font-family: 'Ma Shan Zheng', cursive;
       font-size: 5rem;
       line-height: 1.1;
@@ -152,166 +149,248 @@
       margin-bottom: 8px;
     }
 
-    .hero-left .subhead {
+    .hero-header .subhead {
       font-size: 1.3rem;
       font-weight: 600;
       color: var(--chengdu-green);
       letter-spacing: 2px;
-      margin-bottom: 24px;
+      margin-bottom: 16px;
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 12px;
     }
+
     .subhead i {
       color: var(--chengdu-gold);
       font-size: 1.6rem;
     }
 
-    .hero-desc {
+    .hero-header .hero-desc {
       font-size: 1.1rem;
-      margin-bottom: 32px;
-      max-width: 90%;
+      margin: 0 auto 24px;
+      max-width: 700px;
       border-left: 6px solid var(--chengdu-gold);
       padding-left: 20px;
       background: linear-gradient(to right, rgba(233, 183, 65, 0.08), transparent);
       border-radius: 0 12px 12px 0;
+      text-align: left;
     }
 
-    .btn-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      align-items: center;
-    }
-
-    .btn-primary {
-      background: var(--chengdu-red);
-      border: none;
-      color: white;
-      font-weight: 700;
-      font-size: 1.2rem;
-      padding: 16px 38px;
-      border-radius: 60px;
-      cursor: pointer;
-      box-shadow: 0 10px 20px -8px rgba(196, 39, 46, 0.6);
-      transition: var(--transition);
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      border: 2px solid var(--chengdu-gold);
-      letter-spacing: 1px;
-    }
-
-    .btn-primary i {
-      font-size: 1.3rem;
-      color: var(--chengdu-gold);
-    }
-
-    .btn-primary:hover {
-      background: #a51f26;
-      transform: scale(1.02) translateY(-3px);
-      box-shadow: 0 20px 30px -8px rgba(196, 39, 46, 0.8);
-    }
-
-    .btn-outline {
-      background: transparent;
-      border: 2px solid var(--chengdu-green);
-      color: var(--chengdu-green);
-      font-weight: 700;
-      font-size: 1.1rem;
-      padding: 14px 28px;
-      border-radius: 60px;
-      cursor: pointer;
-      transition: var(--transition);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      backdrop-filter: blur(4px);
-    }
-
-    .btn-outline i {
-      color: var(--chengdu-red);
-    }
-
-    .btn-outline:hover {
-      background: var(--chengdu-green);
-      color: #fbf5e8;
-      border-color: var(--chengdu-gold);
-      transform: translateY(-3px);
-    }
-    .btn-outline:hover i {
-      color: var(--chengdu-gold);
-    }
-
-    /* 右侧文化卡片 */
-    .hero-right {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 24px;
+    /* ===== 轮播图（标题下方） ===== */
+    .carousel-section {
       position: relative;
-    }
-
-    .culture-card {
-      background: white;
-      border-radius: 40px 12px 40px 12px;
-      padding: 20px 20px;
-      width: 160px;
+      width: 100%;
+      border-radius: 48px 8px 48px 8px;
+      overflow: hidden;
       box-shadow: var(--shadow-sm);
-      transition: var(--transition);
-      border: 1px solid rgba(233, 183, 65, 0.4);
-      text-align: center;
-      backdrop-filter: blur(8px);
-      background: rgba(255, 255, 255, 0.8);
-      transform: rotate(1deg);
+      margin-bottom: 20px;
+      background: #1e2b27;
     }
 
-    .culture-card:nth-child(2) {
-      transform: rotate(-2deg) translateY(20px);
-      border-radius: 12px 40px 12px 40px;
-      background: rgba(255, 255, 255, 0.9);
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      height: 480px;
+      overflow: hidden;
     }
 
-    .culture-card:nth-child(3) {
-      transform: rotate(3deg) translateY(-10px);
-      border-radius: 24px;
+    .carousel-track {
+      display: flex;
+      width: 500%;
+      height: 100%;
+      transition: transform 0.75s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+      will-change: transform;
     }
 
-    .culture-card:nth-child(4) {
-      transform: rotate(-1deg) translateY(10px);
-      border-radius: 20px 8px 30px 8px;
+    .slide {
+      width: 20%;
+      height: 100%;
+      position: relative;
+      flex-shrink: 0;
+      background-size: cover;
+      background-position: center;
     }
 
-    .culture-card:hover {
-      transform: scale(1.05) rotate(0deg) translateY(-5px);
-      box-shadow: var(--shadow-hover);
-      background: white;
-      border-color: var(--chengdu-gold);
+    .slide-1 {
+      background-image: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.35)), url('p/1.png');
+    }
+    .slide-2 {
+      background-image: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.35)), url('p/7.png');
+    }
+    .slide-3 {
+      background-image: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.35)), url('p/4.png');
+    }
+    .slide-4 {
+      background-image: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.35)), url('p/3.png');
+    }
+    .slide-5 {
+      background-image: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.35)), url('p/5.png');
     }
 
-    .culture-card i {
-      font-size: 2.6rem;
-      color: var(--chengdu-red);
-      margin-bottom: 8px;
-      display: block;
+    .slide-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 60px 48px 48px;
+      background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3) 60%, transparent 100%);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      pointer-events: none;
     }
 
-    .culture-card h4 {
+    .slide-caption h2 {
       font-family: 'Ma Shan Zheng', cursive;
-      font-size: 1.5rem;
-      color: var(--chengdu-green);
+      font-size: 3.2rem;
+      color: var(--chengdu-gold);
+      letter-spacing: 3px;
+      text-shadow: 3px 3px 0 rgba(196, 39, 46, 0.5);
+      line-height: 1.2;
+    }
+
+    .slide-caption p {
+      font-size: 1.1rem;
+      max-width: 600px;
+      color: #f0e8dc;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+    }
+
+    .slide-caption .slide-tag {
+      display: inline-block;
+      background: var(--chengdu-red);
+      color: white;
+      padding: 6px 22px;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      width: fit-content;
+      border: 1px solid var(--chengdu-gold);
       margin-bottom: 4px;
     }
 
-    .culture-card p {
-      font-size: 0.8rem;
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(8px);
+      border: 2px solid rgba(233, 183, 65, 0.7);
+      color: white;
+      font-size: 1.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+      z-index: 20;
+      outline: none;
+    }
+
+    .carousel-btn:hover {
+      background: var(--chengdu-red);
+      border-color: var(--chengdu-gold);
+      transform: translateY(-50%) scale(1.1);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    .carousel-btn.prev {
+      left: 24px;
+    }
+
+    .carousel-btn.next {
+      right: 24px;
+    }
+
+    .carousel-dots {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 12px;
+      z-index: 20;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.4);
+      border: 1px solid var(--chengdu-gold);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .dot.active {
+      background: var(--chengdu-gold);
+      transform: scale(1.3);
+      box-shadow: 0 0 12px rgba(233, 183, 65, 0.8);
+    }
+
+    .dot:hover {
+      background: var(--chengdu-red);
+    }
+
+    /* ===== 快速入口卡片（原右侧文化卡片，现作为独立横条） ===== */
+    .quick-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin: 28px 0 16px;
+    }
+
+    .quick-card {
+      background: white;
+      border-radius: 28px 8px 28px 8px;
+      padding: 16px 28px;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      border: 1px solid rgba(233, 183, 65, 0.4);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      backdrop-filter: blur(8px);
+      background: rgba(255, 255, 255, 0.85);
+    }
+
+    .quick-card:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: var(--shadow-hover);
+      border-color: var(--chengdu-gold);
+      background: white;
+    }
+
+    .quick-card i {
+      font-size: 2rem;
+      color: var(--chengdu-red);
+    }
+
+    .quick-card .quick-text h4 {
+      font-family: 'Ma Shan Zheng', cursive;
+      font-size: 1.3rem;
+      color: var(--chengdu-green);
+      line-height: 1.2;
+    }
+
+    .quick-card .quick-text p {
+      font-size: 0.75rem;
       color: #4f5e57;
       font-weight: 600;
     }
 
     /* ===== 视频宣传片板块 ===== */
     .video-section {
-      margin: 20px 0 50px;
+      margin: 32px 0 50px;
       scroll-margin-top: 20px;
     }
 
@@ -353,7 +432,7 @@
 
     .video-caption h3 {
       font-family: 'Ma Shan Zheng', cursive;
-      font-size: 2.4rem;
+      font-size: 2.2rem;
       color: var(--chengdu-gold);
       margin-bottom: 16px;
       line-height: 1.2;
@@ -366,7 +445,7 @@
     }
 
     .video-caption p {
-      font-size: 1.05rem;
+      font-size: 1rem;
       color: #e1d9cc;
       margin-bottom: 24px;
       line-height: 1.6;
@@ -665,25 +744,29 @@
         align-self: flex-start;
         margin-top: 8px;
       }
+      .carousel-container {
+        height: 400px;
+      }
+      .slide-caption h2 {
+        font-size: 2.6rem;
+      }
     }
 
     @media (max-width: 960px) {
-      .hero {
-        grid-template-columns: 1fr;
-        text-align: center;
+      .hero-header h1 {
+        font-size: 3.6rem;
       }
-      .hero-left .subhead {
-        justify-content: center;
+      .hero-header .subhead {
+        font-size: 1.1rem;
+        flex-wrap: wrap;
       }
-      .hero-desc {
-        max-width: 100%;
+      .hero-header .hero-desc {
+        font-size: 1rem;
         border-left: none;
         border-top: 4px solid var(--chengdu-gold);
         padding: 16px 0 0;
         background: none;
-      }
-      .btn-group {
-        justify-content: center;
+        text-align: center;
       }
       .section-sub {
         padding-left: 0;
@@ -691,6 +774,7 @@
       }
       .section-title {
         justify-content: center;
+        font-size: 2.4rem;
       }
       .navbar {
         flex-direction: column;
@@ -701,11 +785,28 @@
         gap: 24px;
         text-align: center;
       }
+      .carousel-container {
+        height: 340px;
+      }
+      .slide-caption {
+        padding: 40px 24px 36px;
+      }
+      .slide-caption h2 {
+        font-size: 2rem;
+      }
+      .slide-caption p {
+        font-size: 0.95rem;
+      }
+      .carousel-btn {
+        width: 42px;
+        height: 42px;
+        font-size: 1.2rem;
+      }
     }
 
     @media (max-width: 480px) {
-      .hero-left h1 {
-        font-size: 3.2rem;
+      .hero-header h1 {
+        font-size: 2.8rem;
       }
       .logo-text {
         font-size: 1.6rem;
@@ -716,10 +817,55 @@
         justify-content: center;
       }
       .section-title {
-        font-size: 2rem;
+        font-size: 1.8rem;
       }
       .video-caption h3 {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
+      }
+      .carousel-container {
+        height: 260px;
+      }
+      .slide-caption h2 {
+        font-size: 1.5rem;
+      }
+      .slide-caption p {
+        font-size: 0.8rem;
+      }
+      .slide-caption .slide-tag {
+        font-size: 0.7rem;
+        padding: 4px 14px;
+      }
+      .carousel-btn {
+        width: 34px;
+        height: 34px;
+        font-size: 1rem;
+      }
+      .carousel-btn.prev {
+        left: 8px;
+      }
+      .carousel-btn.next {
+        right: 8px;
+      }
+      .carousel-dots {
+        bottom: 12px;
+        gap: 8px;
+      }
+      .dot {
+        width: 8px;
+        height: 8px;
+      }
+      .quick-cards {
+        gap: 12px;
+      }
+      .quick-card {
+        padding: 12px 18px;
+        gap: 10px;
+      }
+      .quick-card i {
+        font-size: 1.6rem;
+      }
+      .quick-card .quick-text h4 {
+        font-size: 1.1rem;
       }
     }
   </style>
@@ -743,56 +889,112 @@
       </div>
     </nav>
 
-    <!-- 主视觉 -->
-    <section class="hero">
-      <div class="hero-left">
-        <h1>漫游成都<br>慢享天府</h1>
-        <div class="subhead">
-          <i class="fas fa-bamboo"></i> 熊猫故乡 · 美食之都 · 休闲之城
+    <!-- ===== 主标题区域（无图片，纯标题） ===== -->
+    <header class="hero-header">
+      <h1>漫游成都<br>慢享天府</h1>
+      <div class="subhead">
+        <i class="fas fa-bamboo"></i> 熊猫故乡 · 美食之都 · 休闲之城
+      </div>
+      <p class="hero-desc">
+        从宽窄巷子的青砖黛瓦到锦里灯火，从麻辣火锅的沸腾到盖碗茶的闲适， 
+        成都将千年古韵与潮流生活完美融合。在这里，时间变慢，滋味变长。
+      </p>
+    </header>
+
+    <!-- ===== 轮播图（位于标题下方） ===== -->
+    <section class="carousel-section">
+      <div class="carousel-container">
+        <div class="carousel-track" id="carouselTrack">
+          <div class="slide slide-1">
+            <div class="slide-caption">
+              <span class="slide-tag">🐼 熊猫故乡</span>
+              <h2>成都大熊猫基地</h2>
+              <p>在竹林深处与国宝相遇，看熊猫幼崽嬉戏打闹，感受最治愈的成都。</p>
+            </div>
+          </div>
+          <div class="slide slide-2">
+            <div class="slide-caption">
+              <span class="slide-tag">🌶️ 麻辣江湖</span>
+              <h2>沸腾火锅</h2>
+              <p>牛油红锅翻滚，毛肚鸭肠七上八下，每一口都是热辣江湖。</p>
+            </div>
+          </div>
+          <div class="slide slide-3">
+            <div class="slide-caption">
+              <span class="slide-tag">🎭 川剧变脸</span>
+              <h2>锦里古街</h2>
+              <p>西蜀第一街，夜晚红灯笼高挂，看川剧变脸，梦回三国繁华。</p>
+            </div>
+          </div>
+          <div class="slide slide-4">
+            <div class="slide-caption">
+              <span class="slide-tag">🍵 老成都</span>
+              <h2>鹤鸣茶社</h2>
+              <p>百年茶馆里点一碗盖碗茶，体验采耳，感受最具烟火气的成都慢生活。</p>
+            </div>
+          </div>
+          <div class="slide slide-5">
+            <div class="slide-caption">
+              <span class="slide-tag">📜 诗圣遗风</span>
+              <h2>杜甫草堂</h2>
+              <p>红墙夹道，竹影婆娑，感受“花径不曾缘客扫”的意境。</p>
+            </div>
+          </div>
         </div>
-        <p class="hero-desc">
-          从宽窄巷子的青砖黛瓦到锦里灯火，从麻辣火锅的沸腾到盖碗茶的闲适， 
-          成都将千年古韵与潮流生活完美融合。在这里，时间变慢，滋味变长。
-        </p>
-        <div class="btn-group">
-          <button class="btn-primary" onclick="alert('🏮 欢迎来到成都！开启你的天府之旅～')">
-            <i class="fas fa-compass"></i> 开始探索
-          </button>
-          <button class="btn-outline" onclick="document.getElementById('video-section').scrollIntoView({ behavior: 'smooth' })">
-            <i class="fas fa-play"></i> 观看宣传片
-          </button>
+
+        <button class="carousel-btn prev" id="prevBtn" aria-label="上一张">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="carousel-btn next" id="nextBtn" aria-label="下一张">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+
+        <div class="carousel-dots" id="carouselDots">
+          <span class="dot active" data-index="0"></span>
+          <span class="dot" data-index="1"></span>
+          <span class="dot" data-index="2"></span>
+          <span class="dot" data-index="3"></span>
+          <span class="dot" data-index="4"></span>
         </div>
       </div>
+    </section>
 
-      <div class="hero-right">
-        <div class="culture-card">
-          <i class="fas fa-paw"></i>
+    <!-- ===== 快速入口卡片（四大文化标签） ===== -->
+    <div class="quick-cards">
+      <div class="quick-card">
+        <i class="fas fa-paw"></i>
+        <div class="quick-text">
           <h4>大熊猫</h4>
           <p>国宝家园 · 萌动世界</p>
         </div>
-        <div class="culture-card">
-          <i class="fas fa-pepper-hot"></i>
+      </div>
+      <div class="quick-card">
+        <i class="fas fa-pepper-hot"></i>
+        <div class="quick-text">
           <h4>川菜</h4>
           <p>麻辣鲜香 · 百菜百味</p>
         </div>
-        <div class="culture-card">
-          <i class="fas fa-mask"></i>
+      </div>
+      <div class="quick-card">
+        <i class="fas fa-mask"></i>
+        <div class="quick-text">
           <h4>川剧</h4>
           <p>变脸吐火 · 非遗瑰宝</p>
         </div>
-        <div class="culture-card">
-          <i class="fas fa-mug-hot"></i>
+      </div>
+      <div class="quick-card">
+        <i class="fas fa-mug-hot"></i>
+        <div class="quick-text">
           <h4>盖碗茶</h4>
           <p>茶馆闲情 · 慢生活</p>
         </div>
       </div>
-    </section>
+    </div>
 
     <!-- ===== 视频宣传片板块 ===== -->
     <section id="video-section" class="video-section">
       <div class="video-container">
         <div class="video-wrapper">
-          <!-- 使用稳定的示例视频源（可通过替换src更换为成都宣传片） -->
           <video controls poster="https://images.unsplash.com/photo-1523905336891-7e2d9b2fca4f?w=1200&auto=format&fit=crop&q=80">
             <source src="v/cd1.mp4" type="video/mp4">
             您的浏览器不支持视频播放，请更换浏览器。
@@ -1085,6 +1287,72 @@
       window.addEventListener('resize', resizeCanvas);
       resizeCanvas();
       animate();
+    })();
+  </script>
+
+  <!-- ===== 轮播图逻辑 ===== -->
+  <script>
+    (function() {
+      const track = document.getElementById('carouselTrack');
+      const dots = document.querySelectorAll('#carouselDots .dot');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      const totalSlides = 5;
+      let currentIndex = 0;
+      let autoTimer = null;
+      const INTERVAL = 4000;
+
+      function updateCarousel(index) {
+        if (index < 0) index = totalSlides - 1;
+        if (index >= totalSlides) index = 0;
+        currentIndex = index;
+        track.style.transform = `translateX(-${currentIndex * 20}%)`;
+        dots.forEach((dot, i) => {
+          dot.classList.toggle('active', i === currentIndex);
+        });
+      }
+
+      function nextSlide() {
+        updateCarousel(currentIndex + 1);
+      }
+
+      function prevSlide() {
+        updateCarousel(currentIndex - 1);
+      }
+
+      function resetAuto() {
+        if (autoTimer) clearInterval(autoTimer);
+        autoTimer = setInterval(nextSlide, INTERVAL);
+      }
+
+      nextBtn.addEventListener('click', () => {
+        nextSlide();
+        resetAuto();
+      });
+
+      prevBtn.addEventListener('click', () => {
+        prevSlide();
+        resetAuto();
+      });
+
+      dots.forEach(dot => {
+        dot.addEventListener('click', (e) => {
+          const index = parseInt(e.target.dataset.index, 10);
+          updateCarousel(index);
+          resetAuto();
+        });
+      });
+
+      const carousel = document.querySelector('.carousel-section');
+      carousel.addEventListener('mouseenter', () => {
+        if (autoTimer) clearInterval(autoTimer);
+      });
+      carousel.addEventListener('mouseleave', () => {
+        resetAuto();
+      });
+
+      updateCarousel(0);
+      resetAuto();
     })();
   </script>
 
